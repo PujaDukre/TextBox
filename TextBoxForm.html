@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Text Box</title>
+</head>
+<body style="background-color: powderblue;" >
+	<h1 align= "center" class="heading">TEXT BOX</h1>
+	<div class="container" align="center">
+		<form class="textboxform">
+			<label>Enter your text below :</label>
+			<br><br>
+			<textarea id="text" rows="10" cols="70" onkeyup="updateInfo()" autofocus></textarea>
+			<br><br>
+			<button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformLowerCase()">LOWERCASE</button>
+			<button type="button" onclick="findText()">FIND</button>
+			<button type="button" onclick="changeColor()">CHANGE COLOR</button>
+			<button type="button" onclick="textUnderline()">UNDERLINE</button>
+			<button type="button" onclick="copyText()">COPY</button>
+			<button type="button" onclick="clearText()">CLEAR</button>
+			<br><br>
+			<h2 id="textInfo">Word Count : 0 | Character Count : 0 | Line Count : 0</h2>
+
+			
+		</form>
+		
+	</div>
+	<script type="text/javascript">
+		let text = document.getElementById("text");
+		let textInfo= document.getElementById("textInfo");
+		let clr;
+		// const lineCount = document.getElementById('line-count');
+		function transformUpperCase() {
+			text.value= text.value.toUpperCase();
+
+		}
+		function transformLowerCase() {
+			text.value=text.value.toLowerCase();
+		}
+
+		function findText() {
+			let searchText= prompt("Enter the text : ");
+			if(text.value.includes(searchText))
+			{
+				alert(`Search Text "${searchText}" is present`);
+
+			}
+			else
+			{
+				alert(`Search Text "${searchText}" is not present`);
+
+			}
+		}
+		function changeColor() {
+			clr= prompt(("Enter your favourite color : ").toLowerCase());
+			text.style.color=clr;
+		}
+		function textUnderline() {
+			text.style.textDecoration=`underline 2px solid ${clr}`
+		}
+		 
+		function updateInfo() {
+			let numberOfWords=text.value.trim().split(" ").length;
+			let charCount=text.value.trim().length;
+			
+			let line=text.value.trim().split(/\r\n|\r|\n/);
+			
+			let lineCount=line.filter(line=> line.trim()!=='').length;
+			
+			textInfo.innerHTML= `Word Count :  ${numberOfWords} | Character Count : ${charCount} | Line Count : ${lineCount} `
+			
+		}
+		function copyText() {
+			navigator.clipboard.writeText(text.value)
+		}
+
+	</script>
+
+</body>
+</html>
