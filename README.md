@@ -1,4 +1,4 @@
-# Text Converter onverter 
+# Text Converter 
 This is a simple Text Converter Tool that allows users to perform various operations on text, including converting text to uppercase, lowercase, and underlined format, copying text, clearing the text, and finding specific text and changing its color.
 # Features
 Text Conversion: Users can convert the text to uppercase, lowercase, or underlined format using the respective buttons provided.
